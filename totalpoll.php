@@ -346,12 +346,8 @@ if ( ! class_exists( 'TotalPoll' ) ) :
 		 */
 		public function widgets() {
 			$base   = ( include_once TP_PATH . 'includes/widgets/base.php' );
-			$latest = ( include_once TP_PATH . 'includes/widgets/latest.php' );
-			$random = ( include_once TP_PATH . 'includes/widgets/random.php' );
-
+			
 			register_widget( $base );
-			register_widget( $latest );
-			register_widget( $random );
 		}
 
 		/**
