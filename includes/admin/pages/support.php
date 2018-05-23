@@ -10,10 +10,10 @@ endif; // Shhh
 		<h1 class="totalpoll-page-title"><i class="fas fa-question"></i> <?php _e( 'Support Center', TP_TD ); ?></h1>
 
 		<div class="links-cards clearfix">
-			<a href="#" target="_blank" class="link-card">
+			<a href="http://pnyx.online/faq/" target="_blank" class="link-card">
 				<p><?php _e( 'Have a question? Read the FAQs.', TP_TD ); ?></p>
 			</a>
-			<a href="#" target="_blank" class="link-card">
+			<a href="http://pnyx.online/support/" target="_blank" class="link-card">
 				<p><?php _e( 'Open a support ticket.', TP_TD ); ?></p>
 			</a>
 		</div>
