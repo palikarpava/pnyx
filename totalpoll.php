@@ -67,7 +67,6 @@ if ( ! class_exists( 'TotalPoll' ) ) :
 			'admin/installer'  => array( 'class' => 'TP_Admin_Installer', 'file' => 'includes/admin/installer.php' ),
 			'admin/statistics' => array( 'class' => 'TP_Admin_Statistics', 'file' => 'includes/admin/statistics.php' ),
 			'admin/download'   => array( 'class' => 'TP_Admin_Download', 'file' => 'includes/admin/download.php' ),
-			'custom/constants' => array('class' => 'TP_Custom_Constants', 'file' => 'custom/constants/TP_Custom_Constants.php'),
 		);
 
 		/**
@@ -395,10 +394,6 @@ if ( ! class_exists( 'TotalPoll' ) ) :
         {
         	wp_enqueue_style('custom_css', TP_URL . 'assets/css/totalpoll.css', array());
 
-            if (!class_exists(self::$classes['custom/constants']['class'])) {
-                require_once self::$classes['custom/constants']['file'];
-            }
-
             $queryAttributes = [
                 'post_type' => 'poll',
                 'meta_key' => isset($attributes['taxonomy_id']) ? 'thiscategory' : 'allcategory',
@@ -420,7 +415,7 @@ if ( ! class_exists( 'TotalPoll' ) ) :
 
             if (!empty($featuredPoll)) {
                 $featuredPoll = array_pop($featuredPoll);
-                $render = $this->getTemplatePart(['featured_poll_id' => $featuredPoll->ID], self::$classes['custom/constants']['class']::TEMPLATE_FEATURED_POLL);
+                $render = $this->getTemplatePart(['featured_poll_id' => $featuredPoll->ID], 'featured_view');
             }
 
             $categoriesArguments = array(
@@ -429,7 +424,7 @@ if ( ! class_exists( 'TotalPoll' ) ) :
             );
 
             $terms = get_terms($categoriesArguments);
-            $render .= $this->getTemplatePart(['terms' => $terms], self::$classes['custom/constants']['class']::TEMPLATE_TERMS);
+            $render .= $this->getTemplatePart(['terms' => $terms], 'terms');
 
             return $render;
         }
@@ -437,10 +432,6 @@ if ( ! class_exists( 'TotalPoll' ) ) :
         public function shortViewPollShortcode($attributes, $content = '')
         {
         	wp_enqueue_style('custom_css', TP_URL . 'assets/css/totalpoll.css', array());
-
-            if (!class_exists(self::$classes['custom/constants']['class'])) {
-                require_once self::$classes['custom/constants']['file'];
-            }
 
             $arguments = array(
                 'post_type' => 'poll',
@@ -468,7 +459,7 @@ if ( ! class_exists( 'TotalPoll' ) ) :
                 return '';
             }
 
-            $render = $this->getTemplatePart(['polls' => $polls], self::$classes['custom/constants']['class']::TEMPLATE_SHORT_VIEW_POLL);
+            $render = $this->getTemplatePart(['polls' => $polls], 'short_view');
             return $render;
         }
 
@@ -508,17 +499,13 @@ if ( ! class_exists( 'TotalPoll' ) ) :
 
 		public function singlePoll($content)
         {
-            if (!class_exists(self::$classes['custom/constants']['class'])) {
-                require_once self::$classes['custom/constants']['file'];
-            }
-
             global $post;
 
             if (defined('TP_ASYNC') && TP_ASYNC === true && !empty($post)):
                 return self::async($post->ID, $content);
             endif;
 
-            $poll = self::poll($post->ID)->render(self::$classes['custom/constants']['class']::TEMPLATE_SINGLE_POLL);
+            $poll = self::poll($post->ID)->render('vote');
 
             $taxonomies = get_the_terms($post->ID, 'poll_category');
             $taxonomy = empty($taxonomies) ? null : array_pop($taxonomies);
@@ -540,7 +527,7 @@ if ( ! class_exists( 'TotalPoll' ) ) :
             $query = new WP_Query($arguments);
             $polls = $query->posts;
 
-            $samePolls = $this->getTemplatePart(['polls' => $polls], self::$classes['custom/constants']['class']::TEMPLATE_SHORT_VIEW_POLL);
+            $samePolls = $this->getTemplatePart(['polls' => $polls], 'short_view');
 
             $categoriesArguments = array(
                 'taxonomy' => 'poll_category',
@@ -549,7 +536,7 @@ if ( ! class_exists( 'TotalPoll' ) ) :
 
             $terms = get_terms($categoriesArguments);
 
-            $categories = $this->getTemplatePart(['terms' => $terms], self::$classes['custom/constants']['class']::TEMPLATE_TERMS);
+            $categories = $this->getTemplatePart(['terms' => $terms], 'terms');
 
             $render = $poll . $categories . $samePolls;
 

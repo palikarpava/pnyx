@@ -1,10 +1,14 @@
-=== Pnyx ===
-Contributors: pnyx
-Tags: poll, public opinion, voting, dilemma, image, polling, marketing, opinion, poll builder, create poll, custom poll, poll widget, poll archive, easy, intuitive, online poll, poll post, poll page, collect answers, choices, answers, question, rtl, shortcode, template, video, vote, widget, wp-polls, yop poll, feedback, poll form, single question survey, drag and drop, questionnaire, poll tool, vote, election, opinionstage, polldaddy, mobile friendly, mobile first, poll post type, results, contestant, flash poll, poll directory, statistics, logs, submissions, templates, extensions, extensible, limitations
-Requires at least: 3.8.0
+### Pnyx
+Contributors: Nastassiya Palikarpava
+
+Requires Wordpress at least: 3.8.0
+
 Tested up to: 4.5
+
 Stable tag: 1.0.0
+
 License: GPLv2 or later
+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 PNYX is a new and powerful WordPress poll plugin that defines a new way to create, manage, customize and integrate polling solution into your business smoothly. PNYX is user-centered, mobile friendly, multi-feature tool that you’ll love to play.
