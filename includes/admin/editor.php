@@ -64,6 +64,7 @@ class TP_Admin_Editor {
 					'template' => array( 'name' => 'default' ),
 					'settings' => array(),
 					'preset'   => '',
+					'transition' => array('type' => 'fade'),
 				),
 			'fields'      => array(),
 			'screens'     => array(),

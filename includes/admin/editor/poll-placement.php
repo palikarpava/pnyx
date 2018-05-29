@@ -23,7 +23,7 @@ endif;
 		$term = get_term( $wpseo_primary_term );
 		if (is_wp_error($term)) {
 			// Default to first category (not Yoast) if an error is returned
-			if (isset($terms) && count($terms)>0){
+			if (isset($terms) && count($terms)>0 && is_array($terms)){
 				$thiscat = $terms[0]->name;
 				$category_link = get_category_link( $terms[0]->term_id );
 			}

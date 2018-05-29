@@ -492,10 +492,7 @@ if (!class_exists('TP_Poll')) :
 
             wp_enqueue_script('chart-admin', TP_URL . 'assets/js/chart/admin.js', array());
             wp_enqueue_script('chartjs', TP_URL . 'assets/js/chart/chartjs.js', array());
-            wp_enqueue_script('events', TP_URL . 'assets/js/chart/events.min.js', array());
             wp_enqueue_script('excanvas', TP_URL . 'assets/js/chart/excanvas.js', array());
-            wp_enqueue_script('legend', TP_URL . 'assets/js/chart/legend.js', array());
-            wp_enqueue_script('mutate', TP_URL . 'assets/js/chart/mutate.min.js', array());
 
             // countdown
             wp_enqueue_style('countdown', TP_URL . 'assets/css/coundown.css', array());
